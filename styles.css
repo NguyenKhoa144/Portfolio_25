@@ -340,6 +340,22 @@ body {
   opacity: 0.8;
 }
 
+/* === Link Styling (đồng bộ toàn trang) === */
+a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+a:hover {
+  color: #ff00ff;
+  opacity: 0.9;
+}
+
+a:visited {
+  color: #00a6cc;
+}
+
 /* Footer */
 .footer {
   padding: 2rem 0;
