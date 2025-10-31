@@ -33,28 +33,35 @@ body {
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo trái, menu phải */
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100%; /* full chiều ngang */
+  padding: 0 5%; /* tạo khoảng cách lề trái/phải */
+  box-sizing: border-box;
+  position: relative; /* đảm bảo flex hoạt động ổn định */
 }
 
 .nav-brand {
   font-size: 1.5rem;
   font-weight: 700;
   color: #00d4ff;
+  flex-shrink: 0; /* tránh logo bị co nhỏ khi thu hẹp màn hình */
 }
 
 .nav-menu {
   display: flex;
+  align-items: center;
   list-style: none;
-  gap: 2rem;
+  gap: 2rem; /* khoảng cách giữa các mục menu */
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; /* để menu tự xuống hàng nếu quá hẹp */
 }
 
 .nav-menu a {
   color: #fff;
   text-decoration: none;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
@@ -92,17 +99,17 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  animation: fadeInUp 1s ease;
+  font-size: 2.8rem; /* trước đây bạn dùng 3.5rem */
+  line-height: 1.2; /* thu nhỏ khoảng cách giữa các dòng */
 }
 
 .highlight {
+  font-size: 2.8rem; /* đồng bộ với tiêu đề chính */
   background: linear-gradient(45deg, #00d4ff, #ff00ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline; /* đảm bảo nằm cùng dòng */
 }
 
 .hero-subtitle {
@@ -225,12 +232,23 @@ body {
   color: #00d4ff;
 }
 
-.about-image img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.about-image {
+  display: flex;
+  justify-content: center; /* căn giữa ảnh trong cột */
 }
 
+.about-image img {
+  width: 80%; /* giảm kích thước tổng thể (từ 100% xuống 80%) */
+  max-width: 320px; /* đảm bảo ảnh không vượt quá 320px */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  object-fit: cover; /* tránh méo ảnh */
+  transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.03); /* hiệu ứng nhẹ khi hover */
+}
 /* Projects Section */
 .projects {
   padding: 100px 0;
@@ -340,6 +358,22 @@ body {
   opacity: 0.8;
 }
 
+/* === Link Styling (đồng bộ toàn trang) === */
+a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+a:hover {
+  color: #ff00ff;
+  opacity: 0.9;
+}
+
+a:visited {
+  color: #00a6cc;
+}
+
 /* Footer */
 .footer {
   padding: 2rem 0;
@@ -425,5 +459,11 @@ body {
 
   .section-title {
     font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .about-image img {
+    width: 70%;
+    max-width: 250px;
   }
 }
