@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Nguyễn Lâm Trọng Khoa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-brand">Khoaxinloi</div>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Chào! Tôi <span class="highlight">Nguyễn Lâm Trọng Khoa </span>
+        </h1>
+        <p class="hero-subtitle">
+          Full-Stack Developer | UI/UX Designer | Coffee Enthusiast
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
+          <a href="#contact" class="btn btn-secondary">Liên Hệ</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img
+          src="/Users/trongkhoa/DEV/Easy_project /Khoa_info/Img/IMG_5785.jpeg"
+          alt="Profile Photo"
+        />
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">Về Tôi</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Đang học ba ơi, có cái đéo gì mà giới thiệu</p>
+            <div class="skills">
+              <h3>Kỹ Năng dự kiến</h3>
+              <ul>
+                <li>HTML/CSS/JS</li>
+                <li>React & Vue</li>
+                <li>Node.js & Express</li>
+                <li>UI/UX Design</li>
+              </ul>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="/Users/trongkhoa/DEV/Easy_project /Portfolio/img/IMG_4918.JPG"
+              alt="About Image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Dự Án Nổi Bật</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x250/0a0a0a/00d4ff?text=Project+1"
+              alt="Project 1"
+            />
+            <div class="project-info">
+              <h3>E-Commerce App</h3>
+              <p>
+                Một ứng dụng mua sắm online với tích hợp thanh toán Stripe và
+                React hooks.
+              </p>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x250/0a0a0a/00d4ff?text=Project+2"
+              alt="Project 2"
+            />
+            <div class="project-info">
+              <h3>Weather Dashboard</h3>
+              <p>
+                Dashboard thời tiết thời gian thực sử dụng API OpenWeather và
+                Vue.js.
+              </p>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x250/0a0a0a/00d4ff?text=Project+3"
+              alt="Project 3"
+            />
+            <div class="project-info">
+              <h3>Portfolio Site</h3>
+              <p>
+                Website cá nhân này! Xây dựng bằng HTML/CSS thuần với hiệu ứng
+                parallax.
+              </p>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Liên Hệ Với Tôi</h2>
+        <div class="contact-content">
+          <form class="contact-form">
+            <input type="text" placeholder="Tên của bạn" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Tin nhắn..." rows="5" required></textarea>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+          </form>
+          <div class="contact-info">
+            <h3>Thông Tin</h3>
+            Email:
+            <a href="mailto:nltkhoa2003144@gmail.com"
+              >nltkhoa2003144@gmail.com</a
+            >
+            <p>LinkedIn: linkedin.com/in/nguyenvana</p>
+            <p>GitHub: github.com/nguyenvana</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Nguyễn Lâm Trọng Khoa.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Simple smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Hamburger menu toggle (for mobile)
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
