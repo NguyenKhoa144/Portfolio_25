@@ -1,194 +1,151 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Nguyễn Lâm Trọng Khoa</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Header & Navigation -->
-    <header class="header">
-      <nav class="nav">
-        <div class="nav-brand">TrongKhoa</div>
-        <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Nguyễn Lâm Trọng Khoa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator" id="scrollProgress"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Chào! Tôi là
+  <!-- Header & Navigation -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <div class="nav-brand">TrongKhoa</div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Chào! Tôi là
+        <p><span class="highlight">Nguyễn Lâm Trọng Khoa</span></p>
+      </h1>
+      <p class="hero-subtitle">
+        Full-Stack Developer | UI/UX Designer | Coffee Enthusiast
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
+        <a href="#contact" class="btn btn-secondary">Liên Hệ</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./img/IMG_5785.jpeg" alt="Profile Photo" />
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">Về Tôi</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Đang hoàn thiện kỹ năng và phát triển các dự án sáng tạo với đam mê công nghệ và thiết kế.</p>
+          <div class="skills">
+            <h3>My Skills</h3>
+            <ul>
+              <li>HTML/CSS/JS</li>
+              <li>React & Vue</li>
+              <li>Node.js & Express</li>
+              <li>UI/UX Design</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="./img/IMG_4918.JPG" alt="About Image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Dự Án Nổi Bật</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="img/gotgoine_p1.jpg" alt="Gotgoine" />
+          <div class="project-info">
+            <h3>Gọt gòi nè</h3>
+            <p>PR giùm thôi, nhưng mà ăn đi, hơi mắc nhưng mà ngon</p>
+            <div class="project-links">
+              <a href="https://www.facebook.com/profile.php?id=61577434833804">Facebook</a>
+              <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40gotgoinefruit">Tiktok</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/400x250/3b82f6/ffffff?text=Weather+Dashboard" alt="Project 2" />
+          <div class="project-info">
+            <h3>Weather Dashboard</h3>
+            <p>Dashboard thời tiết thời gian thực sử dụng API OpenWeather và Vue.js.</p>
+            <div class="project-links">
+              <a href="#">Live Demo</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="img/ls_thptqg_preview.svg" alt="Ôn Tập Lịch Sử THPT 2026" />
+          <div class="project-info">
+            <h3>Ôn Tập Lịch Sử THPT 2026</h3>
+            <p>Demo ôn thi: 5 đề minh họa, 120 câu trắc nghiệm + Đúng/Sai, chấm điểm tự động theo thang 10.</p>
+            <div class="project-links">
+              <a href="demo/ls-thptqg/index.html" target="_blank" rel="noopener">Live Demo</a>
+              <a href="demo/ls-thptqg/index.html">Mở tại đây</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Liên Hệ Với Tôi</h2>
+      <div class="contact-content">
+        <form class="contact-form">
+          <input type="text" placeholder="Tên của bạn" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Tin nhắn..." rows="5" required></textarea>
+          <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+        <div class="contact-info">
+          <h3>Thông Tin</h3>
           <p>
-            <span class="highlight">Nguyễn Lâm Trọng Khoa </span>
+            Email: <a href="mailto:nltkhoa2003144@gmail.com">nltkhoa2003144@gmail.com</a>
           </p>
-        </h1>
-        <p class="hero-subtitle">
-          Full-Stack Developer | UI/UX Designer | Coffee Enthusiast
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
-          <a href="#contact" class="btn btn-secondary">Liên Hệ</a>
+          <p>
+            GitHub: <a href="https://github.com/NguyenKhoa144">github.com/NguyenKhoa144</a>
+          </p>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="./img/IMG_5785.jpeg" alt="Ảnh cá nhân" alt="Profile Photo" />
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2 class="section-title">Về Tôi</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>Đang hoàn thiện kỹ năng</p>
-            <div class="skills">
-              <h3>My Skill</h3>
-              <ul>
-                <li>HTML/CSS/JS</li>
-                <li>React & Vue</li>
-                <li>Node.js & Express</li>
-                <li>UI/UX Design</li>
-              </ul>
-            </div>
-          </div>
-          <div class="about-image">
-            <img src="./img/IMG_4918.JPG" alt="About Image" />
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Nguyễn Lâm Trọng Khoa. Made with ♥</p>
+    </div>
+  </footer>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="section-title">Dự Án Nổi Bật</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <img src="img/gotgoine_p1.jpg" alt="Gotgoine" />
-            <div class="project-info">
-              <h3>Gọt gòi nè</h3>
-              <p>PR giùm thôi, nhưng mà ăn đi, hơi mắc nhưng mà ngon</p>
-              <div class="project-links">
-                <a href="https://www.facebook.com/profile.php?id=61577434833804"
-                  >Facebook</a
-                >
-                <a
-                  href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40gotgoinefruit%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExQ2U5bkExVW45cE1xcnhEWQEeeZfjCb6eN0kvjmKjJAco1_znISdNduleEySOgPObe0lg7T3Kd3OMFEdtRnA_aem_C6iVecEwt8aNesgsP3YZ0g&h=AT17Z1POxx4-HbZOIFu-eKWyx0hhyzkmtb9CE-WZGCm3gyUt1Zyujk3k3WIg2hLLkvjLrpHcU2Etw3K-7Jh41YE1wONvPBRHHGeBvX73FOBxSmhXxQabG1QdmcIQq73sOhycua1tYA"
-                  >Tiktok</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img
-              src="https://via.placeholder.com/400x250/0a0a0a/00d4ff?text=Project+2"
-              alt="Project 2"
-            />
-            <div class="project-info">
-              <h3>Weather Dashboard</h3>
-              <p>
-                Dashboard thời tiết thời gian thực sử dụng API OpenWeather và
-                Vue.js.
-              </p>
-              <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img
-              src="https://via.placeholder.com/400x250/0a0a0a/00d4ff?text=Project+3"
-              alt="Project 3"
-            />
-            <div class="project-info">
-              <h3>Portfolio Site</h3>
-              <p>
-                Website cá nhân này! Xây dựng bằng HTML/CSS thuần với hiệu ứng
-                parallax.
-              </p>
-              <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="section-title">Liên Hệ Với Tôi</h2>
-        <div class="contact-content">
-          <form class="contact-form">
-            <input type="text" placeholder="Tên của bạn" required />
-            <input type="email" placeholder="Email" required />
-            <textarea placeholder="Tin nhắn..." rows="5" required></textarea>
-            <button type="submit" class="btn btn-primary">Gửi</button>
-          </form>
-          <div class="contact-info">
-            <h3>Thông Tin</h3>
-            <p>
-              Email:
-              <a href="mailto:nltkhoa2003144@gmail.com"
-                >nltkhoa2003144@gmail.com</a
-              >
-            </p>
-            GitHub:
-            <pp
-              ><a href="https://github.com/NguyenKhoa144"
-                >github.com/NguyenKhoa144</a
-              ></pp
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Nguyễn Lâm Trọng Khoa.</p>
-      </div>
-    </footer>
-
-    <script>
-      // Simple smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-
-      // Hamburger menu toggle (for mobile)
-      const hamburger = document.querySelector(".hamburger");
-      const navMenu = document.querySelector(".nav-menu");
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-      });
-    </script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
