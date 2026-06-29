@@ -22,6 +22,10 @@ body {
   position: relative;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 /* Animated Tech Background */
 body::before,
 body::after {
@@ -745,7 +749,7 @@ body::after {
 
   .nav-menu {
     position: fixed;
-    left: -100%;
+    left: 0;
     top: 70px;
     flex-direction: column;
     background: rgba(10, 14, 39, 0.95);
@@ -756,10 +760,15 @@ body::after {
     padding: 2rem 0;
     box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
     border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .nav-menu.active {
-    left: 0;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-menu li {
