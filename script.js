@@ -1,5 +1,28 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Theme toggle (sáng / tối)
+const themeToggle = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  const icon = themeToggle && themeToggle.querySelector('.theme-icon');
+  if (icon) icon.textContent = theme === 'light' ? '☀️' : '🌙';
+  localStorage.setItem('theme', theme);
+}
+
+applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    applyTheme(isLight ? 'dark' : 'light');
+  });
+}
+
 // Smooth scroll cho tất cả các anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {

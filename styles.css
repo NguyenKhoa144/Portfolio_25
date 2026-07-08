@@ -8,6 +8,32 @@
   --font-body: "Poppins", sans-serif;
   --font-heading: "Space Grotesk", "Poppins", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --body-bg: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --header-bg: rgba(10, 14, 39, 0.7);
+  --header-bg-scrolled: rgba(10, 14, 39, 0.85);
+  --mobile-menu-bg: rgba(10, 14, 39, 0.95);
+  --footer-bg: rgba(10, 14, 39, 0.8);
+  --blob-opacity: 0.3;
+}
+
+:root[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-inner-shadow: rgba(15, 23, 42, 0.06);
+
+  --body-bg: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 50%, #ecfeff 100%);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --header-bg: rgba(255, 255, 255, 0.75);
+  --header-bg-scrolled: rgba(255, 255, 255, 0.92);
+  --mobile-menu-bg: rgba(255, 255, 255, 0.96);
+  --footer-bg: rgba(255, 255, 255, 0.85);
+  --blob-opacity: 0.15;
 }
 
 * {
@@ -19,10 +45,11 @@
 body {
   font-family: var(--font-body);
   line-height: 1.6;
-  color: #e2e8f0;
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
+  color: var(--text-primary);
+  background: var(--body-bg);
   overflow-x: hidden;
   position: relative;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 html {
@@ -52,7 +79,7 @@ body::after {
   position: fixed;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.3;
+  opacity: var(--blob-opacity);
   pointer-events: none;
   z-index: -1;
   animation: float 20s infinite ease-in-out;
@@ -92,19 +119,19 @@ body::after {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 14, 39, 0.7);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 30px rgba(59, 130, 246, 0.1);
   z-index: 1000;
   padding: 1rem 0;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .header.scrolled {
   padding: 0.5rem 0;
   box-shadow: 0 4px 30px rgba(59, 130, 246, 0.2);
-  background: rgba(10, 14, 39, 0.85);
+  background: var(--header-bg-scrolled);
 }
 
 .nav {
@@ -155,7 +182,7 @@ body::after {
 }
 
 .nav-menu a {
-  color: #cbd5e1;
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -183,17 +210,66 @@ body::after {
   width: 100%;
 }
 
-.nav-github {
-  color: #cbd5e1;
+.nav-controls {
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
+  gap: 0.6rem;
 }
 
-.nav-github:hover {
+.lang-toggle,
+.theme-toggle {
+  font-family: var(--font-mono);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.lang-toggle:hover,
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.18);
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+
+.lang-option {
+  opacity: 0.5;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.lang-option.active {
+  opacity: 1;
   color: var(--accent-3);
-  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.6));
-  transform: translateY(-2px);
+}
+
+.lang-sep {
+  opacity: 0.4;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg);
 }
 
 /* Hamburger Menu */
@@ -267,7 +343,7 @@ body::after {
   font-size: 2.6rem;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: #e2e8f0;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -296,7 +372,7 @@ body::after {
 .hero-subtitle {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-family: var(--font-mono);
   animation: fadeInUp 1s ease 0.2s both;
 }
@@ -306,7 +382,7 @@ body::after {
 }
 
 .hero-desc {
-  color: #94a3b8;
+  color: var(--text-muted);
   max-width: 480px;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease 0.3s both;
@@ -553,7 +629,7 @@ body::after {
 
 .bento-bio p {
   font-size: 1.05rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   line-height: 1.8;
 }
 
@@ -572,7 +648,7 @@ body::after {
 .bento-note { grid-area: note; }
 
 .bento-note p {
-  color: #94a3b8;
+  color: var(--text-muted);
   line-height: 1.8;
   font-size: 1rem;
 }
@@ -591,7 +667,7 @@ body::after {
 [class^="bento-skill-"] h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--text-primary);
   margin-bottom: 0.7rem;
 }
 
@@ -705,7 +781,7 @@ body::after {
 
 .project-info p {
   margin-bottom: 1.5rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
@@ -738,7 +814,7 @@ body::after {
 .badge-progress {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   padding: 10px 18px;
   border-radius: 20px;
   border: 1px dashed rgba(148, 163, 184, 0.4);
@@ -817,7 +893,7 @@ body::after {
   border: 1px solid rgba(59, 130, 246, 0.2);
   background: rgba(59, 130, 246, 0.05);
   backdrop-filter: blur(10px);
-  color: #e2e8f0;
+  color: var(--text-primary);
   box-shadow:
     0 4px 15px rgba(59, 130, 246, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -859,7 +935,7 @@ body::after {
 
 .contact-info p {
   margin-bottom: 1rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   line-height: 1.8;
 }
 
@@ -880,10 +956,11 @@ body::after {
 .footer {
   padding: 2.5rem 0;
   text-align: center;
-  background: rgba(10, 14, 39, 0.8);
+  background: var(--footer-bg);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(59, 130, 246, 0.2);
-  color: #94a3b8;
+  color: var(--text-muted);
+  transition: background 0.4s ease;
 }
 
 /* Animations */
@@ -952,16 +1029,12 @@ body::after {
     display: flex;
   }
 
-  .nav-github {
-    display: none;
-  }
-
   .nav-menu {
     position: fixed;
     left: 0;
     top: 70px;
     flex-direction: column;
-    background: rgba(10, 14, 39, 0.95);
+    background: var(--mobile-menu-bg);
     backdrop-filter: blur(20px);
     width: 100%;
     text-align: center;
