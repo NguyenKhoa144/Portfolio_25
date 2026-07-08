@@ -1,12 +1,14 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Smooth scroll cho tất cả các anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   });
@@ -19,7 +21,7 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
-  
+
   // Thêm hiệu ứng ripple khi click
   const ripple = document.createElement('span');
   ripple.style.position = 'absolute';
@@ -30,9 +32,9 @@ hamburger.addEventListener('click', () => {
   ripple.style.transform = 'translate(-50%, -50%)';
   ripple.style.animation = 'ripple 0.6s ease-out';
   ripple.style.pointerEvents = 'none';
-  
+
   hamburger.appendChild(ripple);
-  
+
   setTimeout(() => {
     ripple.remove();
   }, 600);
@@ -52,7 +54,7 @@ window.addEventListener('scroll', () => {
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const progress = (scrollTop / scrollHeight) * 100;
   document.getElementById('scrollProgress').style.width = progress + '%';
-  
+
   // Header shadow và style khi scroll
   const header = document.getElementById('header');
   if (scrollTop > 50) {
@@ -98,19 +100,19 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     // Hiệu ứng khi submit
     const button = contactForm.querySelector('button[type="submit"]');
     const originalText = button.textContent;
-    
+
     button.textContent = 'Đang gửi...';
     button.style.transform = 'scale(0.95)';
-    
+
     // Giả lập gửi form (thay bằng API call thật)
     setTimeout(() => {
       button.textContent = '✓ Đã gửi!';
       button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
-      
+
       setTimeout(() => {
         button.textContent = originalText;
         button.style.transform = 'scale(1)';
@@ -139,5 +141,70 @@ window.addEventListener('load', () => {
   }, 100);
 });
 
-console.log('🚀 Portfolio loaded successfully! Tech Glassmorphism Theme 💎');
+// 3D tilt effect cho các thẻ (project card, about card)
+if (!prefersReducedMotion) {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      const rotateX = (py - 0.5) * -8;
+      const rotateY = (px - 0.5) * 8;
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
 
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// Magnetic buttons
+if (!prefersReducedMotion) {
+  document.querySelectorAll('[data-magnetic]').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+}
+
+// Nút Demo: copy lệnh chạy server vào clipboard + mở tab demo
+function showDemoToast(container, message) {
+  const existing = container.querySelector('.demo-toast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('span');
+  toast.className = 'demo-toast';
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add('fade-out');
+    setTimeout(() => toast.remove(), 300);
+  }, 3200);
+}
+
+document.querySelectorAll('.btn-demo').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const cmd = btn.dataset.demoCmd;
+    const url = btn.dataset.demoUrl;
+
+    try {
+      await navigator.clipboard.writeText(cmd);
+      showDemoToast(btn.parentElement, '📋 Đã copy lệnh chạy server. Dán vào terminal nếu chưa bật, rồi mở lại tab demo.');
+    } catch (err) {
+      showDemoToast(btn.parentElement, `Chạy lệnh này trong terminal: ${cmd}`);
+    }
+
+    window.open(url, '_blank', 'noopener');
+  });
+});
+
+console.log('🚀 Portfolio loaded successfully! Tech Glassmorphism Theme 💎');

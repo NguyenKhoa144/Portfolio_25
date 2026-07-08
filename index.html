@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Nguyễn Lâm Trọng Khoa</title>
+  <meta name="description" content="Portfolio của Nguyễn Lâm Trọng Khoa — Full-Stack Developer & UI/UX Designer." />
+  <title>Nguyễn Lâm Trọng Khoa — Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <!-- Scroll Progress Indicator -->
@@ -14,13 +16,18 @@
   <!-- Header & Navigation -->
   <header class="header" id="header">
     <nav class="nav">
-      <div class="nav-brand">TrongKhoa</div>
+      <a href="#home" class="nav-brand">Trọng Khoa<span class="nav-brand-dot">.</span></a>
       <ul class="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <a href="https://github.com/NguyenKhoa144" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+          <path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.17c-3.34.72-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.76-1.33-1.76-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.24 1.84 1.24 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3Z"/>
+        </svg>
+      </a>
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -32,42 +39,59 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-content">
+      <p class="hero-eyebrow">👋 Xin chào, rất vui được gặp bạn</p>
       <h1 class="hero-title">
-        Chào! Tôi là
-        <p><span class="highlight">Nguyễn Lâm Trọng Khoa</span></p>
+        Tôi là
+        <span class="highlight">Nguyễn Lâm Trọng Khoa</span>
       </h1>
       <p class="hero-subtitle">
-        Full-Stack Developer | UI/UX Designer | Coffee Enthusiast
+        Full-Stack Developer <span class="dot-sep">·</span> UI/UX Designer
+      </p>
+      <p class="hero-desc">
+        Tôi xây dựng sản phẩm web từ ý tưởng đến giao diện hoàn chỉnh — chú trọng
+        trải nghiệm người dùng, hiệu năng và những chi tiết nhỏ tạo nên sự khác biệt.
       </p>
       <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
-        <a href="#contact" class="btn btn-secondary">Liên Hệ</a>
+        <a href="#projects" class="btn btn-primary" data-magnetic>Xem Dự Án</a>
+        <a href="#contact" class="btn btn-secondary" data-magnetic>Liên Hệ</a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="./img/IMG_5785.jpeg" alt="Profile Photo" />
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <img src="./img/hero_photo.jpg" alt="Ảnh chân dung Trọng Khoa" width="400" height="400" />
     </div>
+    <a href="#about" class="scroll-cue" aria-label="Cuộn xuống">
+      <span></span>
+    </a>
   </section>
 
   <!-- About Section -->
   <section id="about" class="about">
     <div class="container">
       <h2 class="section-title">Về Tôi</h2>
-      <div class="about-content">
+      <div class="about-content tilt-card">
         <div class="about-text">
-          <p>Đang hoàn thiện kỹ năng và phát triển các dự án sáng tạo với đam mê công nghệ và thiết kế.</p>
+          <p>
+            Mình là sinh viên ngành Công nghệ thông tin, đang tập trung phát triển kỹ năng
+            Full-Stack và thiết kế giao diện. Mình thích biến những ý tưởng nhỏ thành sản phẩm
+            thật — từ một trang landing page đơn giản đến những dự án có tương tác phức tạp hơn.
+          </p>
+          <p>
+            Ngoài code, mình quan tâm đến trải nghiệm người dùng và luôn thử nghiệm công nghệ mới
+            để cải thiện chất lượng sản phẩm mỗi ngày.
+          </p>
           <div class="skills">
-            <h3>My Skills</h3>
+            <h3>Kỹ Năng</h3>
             <ul>
-              <li>HTML/CSS/JS</li>
-              <li>React & Vue</li>
-              <li>Node.js & Express</li>
-              <li>UI/UX Design</li>
+              <li><span>HTML / CSS / JS</span><span class="skill-level" style="--level:90%"></span></li>
+              <li><span>React &amp; Vue</span><span class="skill-level" style="--level:75%"></span></li>
+              <li><span>Node.js &amp; Express</span><span class="skill-level" style="--level:70%"></span></li>
+              <li><span>UI/UX Design</span><span class="skill-level" style="--level:80%"></span></li>
             </ul>
           </div>
         </div>
         <div class="about-image">
-          <img src="./img/IMG_4918.JPG" alt="About Image" />
+          <img src="./img/avatar_about.jpg" alt="Ảnh chân dung Trọng Khoa" width="320" height="448" loading="lazy" />
         </div>
       </div>
     </div>
@@ -78,25 +102,36 @@
     <div class="container">
       <h2 class="section-title">Dự Án Nổi Bật</h2>
       <div class="projects-grid">
-        <div class="project-card">
-          <img src="img/gotgoine_p1.jpg" alt="Gotgoine" />
+        <div class="project-card tilt-card">
+          <div class="project-embed">
+            <iframe src="http://localhost:3000" title="Gọt Gòi Nè – Landing Page" loading="lazy"></iframe>
+            <span class="embed-badge">🖥️ Demo local — chạy <code>npm run dev</code> tại cổng 3000</span>
+          </div>
           <div class="project-info">
-            <h3>Gọt gòi nè</h3>
-            <p>PR giùm thôi, nhưng mà ăn đi, hơi mắc nhưng mà ngon</p>
+            <h3>Gọt Gòi Nè</h3>
+            <p>
+              Landing page Next.js cho thương hiệu trái cây gọt sẵn tại Cần Thơ, kết hợp xây dựng và
+              vận hành kênh truyền thông đa nền tảng (Facebook, TikTok) — phụ trách giao diện, nội dung và tương tác khách hàng.
+            </p>
             <div class="project-links">
-              <a href="https://www.facebook.com/profile.php?id=61577434833804">Facebook</a>
-              <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40gotgoinefruit">Tiktok</a>
+              <a href="https://www.facebook.com/profile.php?id=61577434833804" target="_blank" rel="noopener">Facebook</a>
+              <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40gotgoinefruit" target="_blank" rel="noopener">Tiktok</a>
+              <button
+                type="button"
+                class="btn-demo"
+                data-demo-url="http://localhost:3000"
+                data-demo-cmd="cd /Users/khoatrong/Developer/projects/gotgoine && npm run dev"
+              >▶ Demo</button>
             </div>
           </div>
         </div>
-        <div class="project-card">
-          <img src="img/weather_dashboard_preview.svg" alt="Weather Dashboard preview" />
+        <div class="project-card tilt-card">
+          <img src="img/weather_dashboard_preview.svg" alt="Weather Dashboard preview" loading="lazy" />
           <div class="project-info">
             <h3>Weather Dashboard</h3>
-            <p>Dashboard thời tiết thời gian thực sử dụng API OpenWeather và Vue.js.</p>
+            <p>Dashboard thời tiết thời gian thực, sử dụng API OpenWeather và Vue.js. Dự án cá nhân đang trong quá trình hoàn thiện.</p>
             <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
+              <span class="badge-progress">🚧 Đang phát triển</span>
             </div>
           </div>
         </div>
@@ -113,7 +148,7 @@
           <input type="text" placeholder="Tên của bạn" required />
           <input type="email" placeholder="Email" required />
           <textarea placeholder="Tin nhắn..." rows="5" required></textarea>
-          <button type="submit" class="btn btn-primary">Gửi</button>
+          <button type="submit" class="btn btn-primary" data-magnetic>Gửi</button>
         </form>
         <div class="contact-info">
           <h3>Thông Tin</h3>
@@ -121,7 +156,7 @@
             Email: <a href="mailto:nltkhoa2003144@gmail.com">nltkhoa2003144@gmail.com</a>
           </p>
           <p>
-            GitHub: <a href="https://github.com/NguyenKhoa144">github.com/NguyenKhoa144</a>
+            GitHub: <a href="https://github.com/NguyenKhoa144" target="_blank" rel="noopener">github.com/NguyenKhoa144</a>
           </p>
         </div>
       </div>
@@ -135,6 +170,14 @@
     </div>
   </footer>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="three-scene.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
