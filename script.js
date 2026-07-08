@@ -74,7 +74,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
-      entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+      entry.target.style.animation = 'revealTilt3D 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) forwards';
       observer.unobserve(entry.target);
     }
   });
