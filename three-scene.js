@@ -30,27 +30,30 @@ function initHeroScene(canvas) {
   const group = new THREE.Group();
   scene.add(group);
 
+  // Rings stay large & shallow-tilted so no part ever swings behind the
+  // opaque profile photo (which sits on top via z-index) — see the ~1.76
+  // scene-unit radius the photo covers at this camera fov/distance.
   const ring1 = new THREE.Mesh(
-    new THREE.TorusGeometry(2.15, 0.045, 16, 100),
+    new THREE.TorusGeometry(2.4, 0.045, 16, 100),
     new THREE.MeshBasicMaterial({
       color: 0x60a5fa,
       transparent: true,
       opacity: 0.9
     })
   );
-  ring1.rotation.x = Math.PI / 2.4;
+  ring1.rotation.x = THREE.MathUtils.degToRad(22);
   group.add(ring1);
 
   const ring2 = new THREE.Mesh(
-    new THREE.TorusGeometry(2.6, 0.03, 16, 100),
+    new THREE.TorusGeometry(2.8, 0.03, 16, 100),
     new THREE.MeshBasicMaterial({
       color: 0xa78bfa,
       transparent: true,
       opacity: 0.75
     })
   );
-  ring2.rotation.x = Math.PI / 1.6;
-  ring2.rotation.y = Math.PI / 5;
+  ring2.rotation.x = THREE.MathUtils.degToRad(30);
+  ring2.rotation.y = THREE.MathUtils.degToRad(10);
   group.add(ring2);
 
   const particleCount = 50;
@@ -66,9 +69,13 @@ function initHeroScene(canvas) {
   group.add(particles);
 
   const dummy = new THREE.Object3D();
-  const orbits = Array.from({ length: particleCount }, () => ({
-    radius: 2.1 + Math.random() * 0.6,
-    angle: Math.random() * Math.PI * 2,
+  // Evenly-spaced base angles (with small jitter) so particles are always
+  // spread all the way around the photo, instead of clumping on one side
+  // when fully randomized.
+  const slice = (Math.PI * 2) / particleCount;
+  const orbits = Array.from({ length: particleCount }, (_, i) => ({
+    radius: 2.3 + Math.random() * 0.7,
+    angle: i * slice + (Math.random() - 0.5) * slice * 0.8,
     tilt: (Math.random() - 0.5) * 0.7,
     speed: 0.12 + Math.random() * 0.18
   }));
@@ -102,8 +109,8 @@ function initHeroScene(canvas) {
     if (!running) return;
     frame += 1;
     const t = frame * 0.008;
-    group.rotation.y += (mouseX * 0.6 - group.rotation.y) * 0.02;
-    group.rotation.x += (mouseY * 0.4 - group.rotation.x) * 0.02;
+    group.rotation.y += (mouseX * 0.35 - group.rotation.y) * 0.02;
+    group.rotation.x += (mouseY * 0.15 - group.rotation.x) * 0.02;
     ring1.rotation.z = t * 0.3;
     ring2.rotation.z = -t * 0.2;
     layoutParticles(t);
