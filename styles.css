@@ -376,10 +376,11 @@ body::after {
   text-align: center;
   animation: fadeInRight 1s ease 0.6s both;
   position: relative;
-  min-height: 400px;
+  min-height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .hero-image::before {
@@ -406,10 +407,10 @@ body::after {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 560px;
-  height: 560px;
-  max-width: 140%;
-  max-height: 140%;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   pointer-events: none;
   opacity: 0;
   transition: opacity 1.2s ease;
@@ -1008,9 +1009,12 @@ body::after {
     margin-right: auto;
   }
 
+  .hero-image {
+    min-height: 380px;
+  }
+
   #hero-canvas {
-    width: 320px;
-    height: 320px;
+    max-width: 320px;
   }
 
   .hero-title, .highlight {
