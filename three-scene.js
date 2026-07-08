@@ -30,30 +30,32 @@ function initHeroScene(canvas) {
   const group = new THREE.Group();
   scene.add(group);
 
-  // Rings stay large & shallow-tilted so no part ever swings behind the
-  // opaque profile photo (which sits on top via z-index) — see the ~1.76
-  // scene-unit radius the photo covers at this camera fov/distance.
+  // Rings need radius * cos(tiltX) to stay clearly bigger than the photo's
+  // apparent radius in scene units, or the tilted-in arc swings behind the
+  // opaque profile photo (z-index above canvas) and vanishes. The photo
+  // was shrunk (see .hero-image img max-width) to give more headroom for
+  // a proper dynamic tilt instead of a near-flat, avatar-ring look.
   const ring1 = new THREE.Mesh(
-    new THREE.TorusGeometry(2.4, 0.045, 16, 100),
+    new THREE.TorusGeometry(2.3, 0.045, 16, 100),
     new THREE.MeshBasicMaterial({
       color: 0x60a5fa,
       transparent: true,
       opacity: 0.9
     })
   );
-  ring1.rotation.x = THREE.MathUtils.degToRad(22);
+  ring1.rotation.x = THREE.MathUtils.degToRad(38);
   group.add(ring1);
 
   const ring2 = new THREE.Mesh(
-    new THREE.TorusGeometry(2.8, 0.03, 16, 100),
+    new THREE.TorusGeometry(2.25, 0.03, 16, 100),
     new THREE.MeshBasicMaterial({
       color: 0xa78bfa,
       transparent: true,
       opacity: 0.75
     })
   );
-  ring2.rotation.x = THREE.MathUtils.degToRad(30);
-  ring2.rotation.y = THREE.MathUtils.degToRad(10);
+  ring2.rotation.x = THREE.MathUtils.degToRad(-34);
+  ring2.rotation.y = THREE.MathUtils.degToRad(15);
   group.add(ring2);
 
   const particleCount = 50;
@@ -74,7 +76,7 @@ function initHeroScene(canvas) {
   // when fully randomized.
   const slice = (Math.PI * 2) / particleCount;
   const orbits = Array.from({ length: particleCount }, (_, i) => ({
-    radius: 2.3 + Math.random() * 0.7,
+    radius: 2.1 + Math.random() * 0.6,
     angle: i * slice + (Math.random() - 0.5) * slice * 0.8,
     tilt: (Math.random() - 0.5) * 0.7,
     speed: 0.12 + Math.random() * 0.18
@@ -109,8 +111,8 @@ function initHeroScene(canvas) {
     if (!running) return;
     frame += 1;
     const t = frame * 0.008;
-    group.rotation.y += (mouseX * 0.35 - group.rotation.y) * 0.02;
-    group.rotation.x += (mouseY * 0.15 - group.rotation.x) * 0.02;
+    group.rotation.y += (mouseX * 0.3 - group.rotation.y) * 0.02;
+    group.rotation.x += (mouseY * 0.08 - group.rotation.x) * 0.02;
     ring1.rotation.z = t * 0.3;
     ring2.rotation.z = -t * 0.2;
     layoutParticles(t);
