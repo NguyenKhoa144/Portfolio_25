@@ -23,6 +23,48 @@ if (themeToggle) {
   });
 }
 
+// Ngôn ngữ VI / EN
+const langToggle = document.getElementById('langToggle');
+const translatableEls = document.querySelectorAll('[data-vi]');
+const placeholderEls = document.querySelectorAll('[data-vi-placeholder]');
+let currentLang = 'vi';
+
+const formStrings = {
+  vi: { sending: 'Đang gửi...', sent: '✓ Đã gửi!' },
+  en: { sending: 'Sending...', sent: '✓ Sent!' }
+};
+
+function applyLang(lang) {
+  currentLang = lang;
+
+  translatableEls.forEach(el => {
+    if (el.dataset[lang] !== undefined) el.textContent = el.dataset[lang];
+  });
+
+  placeholderEls.forEach(el => {
+    const key = lang + 'Placeholder';
+    if (el.dataset[key] !== undefined) el.placeholder = el.dataset[key];
+  });
+
+  document.documentElement.lang = lang;
+
+  if (langToggle) {
+    langToggle.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+  }
+
+  localStorage.setItem('lang', lang);
+}
+
+applyLang(localStorage.getItem('lang') === 'en' ? 'en' : 'vi');
+
+if (langToggle) {
+  langToggle.addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'vi' : 'en');
+  });
+}
+
 // Smooth scroll cho tất cả các anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -128,12 +170,12 @@ if (contactForm) {
     const button = contactForm.querySelector('button[type="submit"]');
     const originalText = button.textContent;
 
-    button.textContent = 'Đang gửi...';
+    button.textContent = formStrings[currentLang].sending;
     button.style.transform = 'scale(0.95)';
 
     // Giả lập gửi form (thay bằng API call thật)
     setTimeout(() => {
-      button.textContent = '✓ Đã gửi!';
+      button.textContent = formStrings[currentLang].sent;
       button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
 
       setTimeout(() => {
