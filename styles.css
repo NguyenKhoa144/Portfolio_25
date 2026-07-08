@@ -503,74 +503,94 @@ body::after {
   perspective: 1400px;
 }
 
-.about-content {
+.bento-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, minmax(150px, auto));
+  grid-template-areas:
+    "bio  bio  photo skill1"
+    "bio  bio  photo skill2"
+    "note note skill3 skill4";
+  gap: 1.5rem;
+}
+
+.bento-cell {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  padding: 3rem;
-  border-radius: 30px;
+  border: 1px solid var(--glass-border);
+  border-radius: 26px;
+  padding: 1.8rem;
   box-shadow:
     0 8px 32px rgba(59, 130, 246, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease-out;
-  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.about-content:hover {
+.bento-cell:hover {
+  border-color: var(--accent);
   box-shadow:
     0 15px 50px rgba(59, 130, 246, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.about-text p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #cbd5e1;
-  line-height: 1.8;
-}
+.bento-bio { grid-area: bio; }
 
-.skills h3 {
-  margin-bottom: 1.5rem;
+.bento-bio h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
   background: linear-gradient(45deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.5rem;
 }
 
-.skills ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.skills li {
-  padding: 1rem 1.2rem;
-  background: rgba(59, 130, 246, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  font-weight: 500;
+.bento-bio p {
+  font-size: 1.05rem;
   color: #cbd5e1;
+  line-height: 1.8;
 }
 
-.skills li:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: var(--accent);
-  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+.bento-photo {
+  grid-area: photo;
+  padding: 0.7rem;
 }
 
-.skills li > span:first-child::before {
-  content: "✦";
-  margin-right: 8px;
-  color: var(--accent-3);
-  font-size: 1.1rem;
-  filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.8));
+.bento-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.bento-note { grid-area: note; }
+
+.bento-note p {
+  color: #94a3b8;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.bento-skill-1 { grid-area: skill1; }
+.bento-skill-2 { grid-area: skill2; }
+.bento-skill-3 { grid-area: skill3; }
+.bento-skill-4 { grid-area: skill4; }
+
+.bento-skill-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5));
+}
+
+[class^="bento-skill-"] h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.7rem;
 }
 
 .skill-level {
@@ -579,7 +599,6 @@ body::after {
   height: 5px;
   border-radius: 3px;
   background: rgba(148, 163, 184, 0.15);
-  margin-top: 0.7rem;
   overflow: hidden;
 }
 
@@ -590,27 +609,6 @@ body::after {
   width: var(--level, 0%);
   background: linear-gradient(45deg, var(--accent), var(--accent-2), var(--accent-3));
   border-radius: 3px;
-}
-
-.about-image {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.about-image img {
-  width: 80%;
-  max-width: 320px;
-  border-radius: 30px;
-  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  border: 3px solid rgba(59, 130, 246, 0.3);
-}
-
-.about-image img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 25px 70px rgba(139, 92, 246, 0.5);
 }
 
 /* Projects Section - Enhanced Glass Cards */
@@ -1019,14 +1017,26 @@ body::after {
     font-size: 2.1rem;
   }
 
-  .about-content,
   .contact-content {
     grid-template-columns: 1fr;
     padding: 2rem;
   }
 
-  .skills ul {
+  .bento-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "bio"
+      "photo"
+      "skill1"
+      "skill2"
+      "skill3"
+      "skill4"
+      "note";
+  }
+
+  .bento-photo {
+    min-height: 260px;
   }
 
   .projects-grid {
@@ -1049,10 +1059,6 @@ body::after {
 
   .section-title {
     font-size: 2rem;
-  }
-
-  .about-image img {
-    width: 90%;
   }
 }
 

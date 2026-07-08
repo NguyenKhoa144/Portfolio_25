@@ -81,7 +81,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe tất cả các elements cần animation
-document.querySelectorAll('.project-card, .about-content, .contact-content').forEach(el => {
+document.querySelectorAll('.project-card, .bento-cell, .contact-content').forEach(el => {
   el.style.opacity = '0';
   observer.observe(el);
 });
