@@ -175,36 +175,4 @@ if (!prefersReducedMotion) {
   });
 }
 
-// Nút Demo: copy lệnh chạy server vào clipboard + mở tab demo
-function showDemoToast(container, message) {
-  const existing = container.querySelector('.demo-toast');
-  if (existing) existing.remove();
-
-  const toast = document.createElement('span');
-  toast.className = 'demo-toast';
-  toast.textContent = message;
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.classList.add('fade-out');
-    setTimeout(() => toast.remove(), 300);
-  }, 3200);
-}
-
-document.querySelectorAll('.btn-demo').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    const cmd = btn.dataset.demoCmd;
-    const url = btn.dataset.demoUrl;
-
-    try {
-      await navigator.clipboard.writeText(cmd);
-      showDemoToast(btn.parentElement, '📋 Đã copy lệnh chạy server. Dán vào terminal nếu chưa bật, rồi mở lại tab demo.');
-    } catch (err) {
-      showDemoToast(btn.parentElement, `Chạy lệnh này trong terminal: ${cmd}`);
-    }
-
-    window.open(url, '_blank', 'noopener');
-  });
-});
-
 console.log('🚀 Portfolio loaded successfully! Tech Glassmorphism Theme 💎');
