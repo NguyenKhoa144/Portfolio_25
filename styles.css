@@ -647,10 +647,37 @@ body::after {
 
 .bento-note { grid-area: note; }
 
-.bento-note p {
+.bento-note h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.7rem;
+}
+
+.cert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cert-list li {
+  position: relative;
+  padding-left: 1.2rem;
   color: var(--text-muted);
-  line-height: 1.8;
-  font-size: 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.cert-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--accent), var(--accent-2));
 }
 
 .bento-skill-1 { grid-area: skill1; }
